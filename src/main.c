@@ -6,7 +6,7 @@
 /*   By: ebmarque < ebmarque@student.42porto.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 12:24:34 by ebmarque          #+#    #+#             */
-/*   Updated: 2023/06/14 22:02:08 by ebmarque         ###   ########.fr       */
+/*   Updated: 2023/06/15 16:42:35 by ebmarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,14 @@ int	arg_arr(int argc, char *argv[])
 	long int	next;
 
 	i = 1;
+	if (argc > 2)
+	{
+		if (check_args(argc, argv) < 0)
+		{
+			ft_putstr_fd("Error\n", 2);
+			exit(EXIT_FAILURE);
+		}
+	}
 	while (i < argc - 1)
 	{
 		curr = ft_atoi(argv[i]);

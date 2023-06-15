@@ -6,7 +6,7 @@
 /*   By: ebmarque < ebmarque@student.42porto.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 20:34:37 by ebmarque          #+#    #+#             */
-/*   Updated: 2023/06/15 12:23:38 by ebmarque         ###   ########.fr       */
+/*   Updated: 2023/06/15 19:54:47 by ebmarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ int	check_command(char *line)
 void	do_command(t_stack *a, t_stack *b, char *cmd)
 {
 	if (!ft_strncmp(cmd, "pa", 3))
-		push_to(a, b, true);
-	else if (!ft_strncmp(cmd, "pb", 3))
 		push_to(b, a, true);
+	else if (!ft_strncmp(cmd, "pb", 3))
+		push_to(a, b, true);
 	else if (!ft_strncmp(cmd, "ra", 3))
 		rotate_one(&a->top, a->c, true);
 	else if (!ft_strncmp(cmd, "rb", 3))
 		rotate_one(&b->top, b->c, true);
-	else if (!ft_strncmp(cmd, "rb", 3))
+	else if (!ft_strncmp(cmd, "rr", 3))
 		rotate_two(&a->top, &b->top, true);
 	else if (!ft_strncmp(cmd, "rra", 4))
 		r_rotate(&a->top, a->c, 1, true);
