@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebmarque < ebmarque@student.42porto.com    +#+  +:+       +#+        */
+/*   By: ebmarque <ebmarque@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 12:20:52 by ebmarque          #+#    #+#             */
-/*   Updated: 2023/06/15 10:36:39 by ebmarque         ###   ########.fr       */
+/*   Updated: 2023/06/18 17:09:27 by ebmarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int			invalid_char(int argc, char *argv[]);
 int			invalid_number(int argc, char *argv[]);
 int			check_repetition(int argc, char *argv[]);
 void		get_max_min(int argc, char *argv[], long int *max, long int *min);
-int			check_hash(int argc, char *argv[], bool *p_hash, bool *n_hash);
+// int			check_hash(int argc, char *argv[], bool *p_hash, bool *n_hash);
 
 //LIST UTILS
 t_push		*new_node(int content);

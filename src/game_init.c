@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebmarque < ebmarque@student.42porto.com    +#+  +:+       +#+        */
+/*   By: ebmarque <ebmarque@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 12:27:41 by ebmarque          #+#    #+#             */
-/*   Updated: 2023/06/14 19:56:10 by ebmarque         ###   ########.fr       */
+/*   Updated: 2023/06/18 17:12:08 by ebmarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,53 +54,30 @@ int	invalid_number(int argc, char *argv[])
 	return (0);
 }
 
-int	check_hash(int argc, char *argv[], bool *p_hash, bool *n_hash)
-{
-	long int	num;
-
-	num = ft_atoi(argv[argc - 1]);
-	while (--argc > 0)
-	{
-		num = ft_atoi(argv[argc]);
-		if (num < 0)
-		{
-			num = -num;
-			if (n_hash[num] == true)
-				return (-1);
-			n_hash[num] = true;
-		}
-		else
-		{
-			if (p_hash[num] == true)
-				return (-1);
-			p_hash[num] = true;
-		}
-	}
-	return (0);
-}
-
 int	check_repetition(int argc, char *argv[])
 {
-	bool			*positive_hash;
-	bool			*negative_hash;
-	long int		max;
-	long int		min;
+	long int *arr;
+	int	i;
+	int	j;
 
-	max = ft_atoi(argv[1]);
-	min = ft_atoi(argv[1]);
-	get_max_min(argc, argv, &max, &min);
-	if (min < 0)
-		min = -min;
-	positive_hash = ft_calloc(max + 1, sizeof(bool));
-	negative_hash = ft_calloc(min + 1, sizeof(bool));
-	if (check_hash(argc, argv, positive_hash, negative_hash) < 0)
+	arr = malloc(sizeof(long int) * argc - 1);
+	i = -1;
+	while (++i < argc)
+		arr[i] = ft_atoi(argv[i]);
+	i = -1;
+	while (++i < argc - 1)
 	{
-		free(positive_hash);
-		free(negative_hash);
-		return (-1);
+		j = i;
+		while (++j < argc)
+		{
+			if (arr[i] == arr[j])
+			{
+				free(arr);
+				return (-1);
+			}
+		}
 	}
-	free(positive_hash);
-	free(negative_hash);
+	free(arr);
 	return (0);
 }
 
