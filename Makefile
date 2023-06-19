@@ -6,7 +6,7 @@
 #    By: ebmarque < ebmarque@student.42porto.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/06 14:42:23 by ebmarque          #+#    #+#              #
-#    Updated: 2023/06/15 09:47:40 by ebmarque         ###   ########.fr        #
+#    Updated: 2023/06/17 11:44:21 by ebmarque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,7 @@ fclean: clean
 re:
 	make fclean
 	make all
+	make bonus
 	make clean
 	clear
 

@@ -6,7 +6,7 @@
 /*   By: ebmarque < ebmarque@student.42porto.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 21:11:57 by ebmarque          #+#    #+#             */
-/*   Updated: 2023/06/15 10:12:43 by ebmarque         ###   ########.fr       */
+/*   Updated: 2023/06/19 14:20:44 by ebmarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	dumb_rotate(t_stack *a, t_stack *b)
 void	dumb(t_stack *a, t_stack *b)
 {
 	dumb_rotate(a, b);
-	tree_numbers(a);
+	three_numbers(a);
 	while (b->stack_size > 0)
 		push_to(b, a, false);
 }

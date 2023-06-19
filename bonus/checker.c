@@ -6,7 +6,7 @@
 /*   By: ebmarque < ebmarque@student.42porto.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 20:34:37 by ebmarque          #+#    #+#             */
-/*   Updated: 2023/06/15 19:54:47 by ebmarque         ###   ########.fr       */
+/*   Updated: 2023/06/17 16:04:04 by ebmarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int	main(int argc, char *argv[])
 	init_stack(&a, &b);
 	get_stack(argc, argv, &a);
 	get_line(&a, &b, 0);
-	if (is_organized(a.top))
+	if (is_organized(a.top) && b.stack_size == 0)
 		ft_putstr_fd("OK\n", 1);
 	else
 		ft_putstr_fd("KO\n", 1);

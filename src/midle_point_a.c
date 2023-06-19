@@ -6,7 +6,7 @@
 /*   By: ebmarque < ebmarque@student.42porto.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 15:41:01 by ebmarque          #+#    #+#             */
-/*   Updated: 2023/06/15 10:04:43 by ebmarque         ###   ########.fr       */
+/*   Updated: 2023/06/19 14:16:33 by ebmarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,22 +81,19 @@ void	midle_point_a(t_stack *a, t_stack *b)
 
 	while (a->stack_size > 2)
 	{
-		if (a->stack_size / 2 > 0)
+		org_arr = get_org_arr(a);
+		m_point = org_arr[a->stack_size / 2];
+		nb_elements = (a->stack_size / 2);
+		while (nb_elements > 0)
 		{
-			org_arr = get_org_arr(a);
-			m_point = org_arr[a->stack_size / 2];
-			nb_elements = (a->stack_size / 2);
-			while (nb_elements > 0)
+			if (a->top->data < m_point)
 			{
-				if (a->top->data < m_point)
-				{
-					push_to(a, b, false);
-					nb_elements--;
-				}
-				else
-					decide_rotate_a(a, m_point);
-			}	
-			free(org_arr);
-		}
+				push_to(a, b, false);
+				nb_elements--;
+			}
+			else
+				decide_rotate_a(a, m_point);
+		}	
+		free(org_arr);
 	}
 }

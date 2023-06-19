@@ -6,7 +6,7 @@
 /*   By: ebmarque < ebmarque@student.42porto.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 12:20:52 by ebmarque          #+#    #+#             */
-/*   Updated: 2023/06/15 10:36:39 by ebmarque         ###   ########.fr       */
+/*   Updated: 2023/06/19 14:20:44 by ebmarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ int			check_args(int argc, char *argv[]);
 int			invalid_char(int argc, char *argv[]);
 int			invalid_number(int argc, char *argv[]);
 int			check_repetition(int argc, char *argv[]);
-void		get_max_min(int argc, char *argv[], long int *max, long int *min);
-int			check_hash(int argc, char *argv[], bool *p_hash, bool *n_hash);
 
 //LIST UTILS
 t_push		*new_node(int content);
@@ -67,7 +65,7 @@ void		r_rotate_two(t_push **head_a, t_push **head_b, bool silent);
 void		dumb(t_stack *a, t_stack *b);
 void		get_index(int *b_index, int *s_index, t_push *tmp);
 void		dumb_rotate(t_stack *a, t_stack *b);
-void		tree_numbers(t_stack *a);
+void		three_numbers(t_stack *a);
 int			find_min(t_push *head);
 int			get_case_2(int b_index, int s_index);
 int			get_case(t_stack *a);

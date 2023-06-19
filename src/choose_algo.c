@@ -6,7 +6,7 @@
 /*   By: ebmarque < ebmarque@student.42porto.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 12:42:26 by ebmarque          #+#    #+#             */
-/*   Updated: 2023/06/15 10:13:49 by ebmarque         ###   ########.fr       */
+/*   Updated: 2023/06/19 14:20:44 by ebmarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	get_case(t_stack *a)
 	return (get_case_2(b_index, s_index));
 }
 
-void	tree_numbers(t_stack *a)
+void	three_numbers(t_stack *a)
 {
 	int	case_r;
 
