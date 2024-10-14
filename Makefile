@@ -3,21 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ebmarque < ebmarque@student.42porto.com    +#+  +:+       +#+         #
+#    By: ebmarque <ebmarque@student.42porto.com     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/06 14:42:23 by ebmarque          #+#    #+#              #
-#    Updated: 2023/06/17 11:44:21 by ebmarque         ###   ########.fr        #
+#    Updated: 2024/10/14 12:08:23 by ebmarque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
-
-PUSH_LIB = push_swap.a
-
-CC = cc -Wall -Wextra -Werror -g
-
+LIB_NAME = libpush_swap.a
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -g
 INCLUDE = -I ./includes
-
 LIBFT_A = libft/libft.a
 
 SRC = 	src/panic.c \
@@ -32,37 +29,48 @@ SRC = 	src/panic.c \
 		src/midle_point_utils.c \
 		src/hard_code_utils.c \
 		src/hard_code.c \
-		bonus/checker.c \
-		
+		bonus/checker.c
 
-OBJS = ${SRC:.c=.o}
+OBJ_DIR = obj
+OBJS = $(SRC:%.c=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 
-$(NAME): $(PUSH_LIB) $(OBJS)
-	@$(CC) src/main.c $(INCLUDE) $(PUSH_LIB) $(LIBFT_A) -o $(NAME)
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)/src $(OBJ_DIR)/bonus
 
-$(PUSH_LIB): $(OBJS)
+$(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
+	@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+$(NAME): $(LIB_NAME) $(OBJS)
+	@echo "Linking $(NAME)..."
+	@$(CC) src/main.c $(INCLUDE) $(LIB_NAME) $(LIBFT_A) -o $(NAME)
+	@echo "$(NAME) built successfully."
+
+$(LIB_NAME): $(OBJS)
+	@echo "Building libft..."
 	@make -C libft
-	@ar rcs $(PUSH_LIB) $(LIBFT_A) $(OBJS)
+	@echo "Creating $(LIB_NAME)..."
+	@ar rcs $(LIB_NAME) $(OBJS)
+	@echo "$(LIB_NAME) created successfully."
+
+bonus: $(LIB_NAME) $(OBJS)
+	@echo "Linking checker..."
+	@$(CC) bonus/checker.c $(INCLUDE) $(LIB_NAME) $(LIBFT_A) -o checker
+	@echo "checker built successfully."
 
 clean:
-	@make -C libft/ fclean
-	@rm -fr $(PUSH_LIB)
-	@rm -fr src/*.o bonus/*.o
+	@echo "Cleaning up..."
+	@make -C libft fclean
+	@rm -f $(LIB_NAME)
+	@rm -rf $(OBJ_DIR)
+	@echo "Cleanup done."
 
 fclean: clean
-	@rm -fr $(NAME) $(LIBFT_A) checker
+	@echo "Removing executables..."
+	@rm -f $(NAME) checker
+	@echo "Executables removed."
 
-re:
-	make fclean
-	make all
-	make bonus
-	make clean
-	clear
+re: fclean all
 
-bonus :  $(PUSH_LIB) $(OBJS)
-	@$(CC) bonus/checker.c $(INCLUDE) $(PUSH_LIB) $(LIBFT_A) -o checker
-
-	
-.PHONY: re all clean fclean
+.PHONY: re all clean fclean bonus
